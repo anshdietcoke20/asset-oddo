@@ -42,3 +42,8 @@ next-env.d.ts
 
 # prisma generated client
 /generated/
+
+# agent/design tooling docs — local reference only, not project deliverables
+/AGENTS.md
+/CLAUDE.md
+/DESIGN.md
