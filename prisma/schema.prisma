@@ -89,16 +89,18 @@ enum AuditItemResult {
 }
 
 model Employee {
-  id           String         @id @default(cuid())
-  name         String
-  email        String         @unique
-  passwordHash String
-  role         Role           @default(EMPLOYEE)
-  status       EmployeeStatus @default(ACTIVE)
-  departmentId String?
-  department   Department?    @relation("DepartmentMembers", fields: [departmentId], references: [id])
-  createdAt    DateTime       @default(now())
-  updatedAt    DateTime       @updatedAt
+  id                  String         @id @default(cuid())
+  name                String
+  email               String         @unique
+  passwordHash        String
+  role                Role           @default(EMPLOYEE)
+  status              EmployeeStatus @default(ACTIVE)
+  resetTokenHash      String?
+  resetTokenExpiresAt DateTime?
+  departmentId        String?
+  department          Department?    @relation("DepartmentMembers", fields: [departmentId], references: [id])
+  createdAt           DateTime       @default(now())
+  updatedAt           DateTime       @updatedAt
 
   headOfDepartments   Department[]         @relation("DepartmentHead")
   allocations         AssetAllocation[]    @relation("AllocatedToEmployee")
